@@ -68,6 +68,13 @@ TEMPLATES = [
     },
 ]
 
+SETTINGS_DIR = os.path.dirname(__file__)
+PROJECT_PATH = os.path.join(SETTINGS_DIR, os.pardir)
+PROJECT_ROOT = os.path.abspath(PROJECT_PATH)
+TEMPLATE_DIRS = (
+    os.path.join(PROJECT_ROOT, 'templates'),
+)
+
 WSGI_APPLICATION = 'horarios_etsiinf_GII.wsgi.application'
 
 
