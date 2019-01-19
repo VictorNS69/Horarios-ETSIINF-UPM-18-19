@@ -1,5 +1,9 @@
 from django.shortcuts import render
 
 
-def index(request):
-    return render(request, "ScheduleGenerator/index.html")
+def select_subjects(request):
+    return render(request, "ScheduleGenerator/SelectSubjects.html")
+
+
+def homepage(request):
+    return render(request, "ScheduleGenerator/homepage.html")

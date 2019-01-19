@@ -18,5 +18,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('subjects/', views.index),
+    path('subjects/', views.select_subjects),
+    path('', views.homepage)
 ]
