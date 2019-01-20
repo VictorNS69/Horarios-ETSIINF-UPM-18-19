@@ -20,4 +20,5 @@ from . import views
 urlpatterns = [
     path('', views.homepage, name="home"),
     path('subjects/', views.select_subjects, name="subjects"),
+    path('about/', views.about, name="about"),
 ]

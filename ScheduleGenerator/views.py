@@ -7,3 +7,7 @@ def select_subjects(request):
 
 def homepage(request):
     return render(request, "ScheduleGenerator/homepage.html")
+
+
+def about(request):
+    return render(request, "ScheduleGenerator/about.html")
