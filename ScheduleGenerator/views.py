@@ -2,6 +2,8 @@ from django.shortcuts import render
 
 
 def select_subjects(request):
+    print(request.POST.get("subject_name"))
+    
     return render(request, "ScheduleGenerator/SelectSubjects.html")
 
 

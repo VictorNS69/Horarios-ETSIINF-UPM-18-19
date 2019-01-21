@@ -1,5 +1,16 @@
 {% extends "ScheduleGenerator/base.html" %}
 
 {% block content %}
-<p>subjects</p>
+<form action="#" method="POST">
+    <select class="custom-select" name="subject_name">
+        <option selected>Select a subject</option>
+        <option value=105000001>FUNDAMENTOS FISICOS Y TECNOLOGICOS DE LA INFORMATICA</option>
+        <option value="Mates">Mates</option>
+        <option value="Algebra">Algebra</option>
+    </select>
+    <div>
+        {% csrf_token %}
+        <button type="submit" class="btn btn-lg btn-primary">Ok</button>
+    </div>
+</form>
 {% endblock%}
