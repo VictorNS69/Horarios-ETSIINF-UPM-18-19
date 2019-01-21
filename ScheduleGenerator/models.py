@@ -4,7 +4,7 @@ from multiselectfield import MultiSelectField
 
 
 class Subject (models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
     code = models.BigIntegerField(primary_key=True)
     ects = models.PositiveSmallIntegerField(
         default=0, validators=[MinValueValidator(1)])
