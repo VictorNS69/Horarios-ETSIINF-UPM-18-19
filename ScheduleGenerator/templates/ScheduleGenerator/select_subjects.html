@@ -1,0 +1,9 @@
+{% extends "ScheduleGenerator/base.html" %}
+
+
+{% block content %}
+SUBJECTS HERE
+{% for court in courts %}
+    <li>{{ court }}</li>
+{% endfor %}
+{% endblock %}
