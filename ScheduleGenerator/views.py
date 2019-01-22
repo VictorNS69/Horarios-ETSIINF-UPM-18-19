@@ -2,9 +2,9 @@ from django.shortcuts import render
 
 
 def select_subjects(request):
-    print(request.POST.get("subject_name"))
-    
-    return render(request, "ScheduleGenerator/SelectSubjects.html")
+    print(request.POST.get("inlineRadioOptions"))
+
+    return render(request, "ScheduleGenerator/select_course.html")
 
 
 def homepage(request):
