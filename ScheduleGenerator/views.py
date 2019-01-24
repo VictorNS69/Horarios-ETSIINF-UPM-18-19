@@ -8,6 +8,7 @@ def select_course(request):
         f1 = Subject.objects.filter(semester="1")
         f2 = Subject.objects.filter(semester="2")
         subjects = f1.union(f2).order_by("semester")
+        select_subjects(request)
         return render(request, 'ScheduleGenerator/select_subjects.html', {'subjects': subjects})
 
     if request.POST.get("2º"):
@@ -30,7 +31,6 @@ def select_course(request):
 
     if request.POST.get("Optional"):
         subjects = Subject.objects.filter(type="Optional")
-        print(subjects)
         return render(request, 'ScheduleGenerator/select_subjects.html', {'subjects': subjects})
 
     return render(request, "ScheduleGenerator/select_course.html")
@@ -45,4 +45,5 @@ def about(request):
 
 
 def select_subjects(request):
+    print("im here")
     return render(request, "ScheduleGenerator/select_subjects.html")

@@ -2,8 +2,12 @@
 
 
 {% block content %}
-SUBJECTS HERE
-{% for s in subjects %}
+<form action="" method="POST" style="margin:0 auto;width:75%;text-align:left">
+    <h1>Choose the subjects <span class="badge badge-secondary"></span></h1>
+    {% for s in subjects %}
     <li>{{ s.info }}</li>
-{% endfor %}
+    {% endfor %}
+    {% csrf_token %}
+    <input class="btn btn-primary" type="submit" value="Button" name="Button">
+</form>
 {% endblock %}
