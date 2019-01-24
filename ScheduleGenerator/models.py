@@ -8,7 +8,10 @@ class Subject (models.Model):
     code = models.BigIntegerField(primary_key=True)
     ects = models.PositiveSmallIntegerField(
         default=0, validators=[MinValueValidator(1)])
-    type = models.CharField(max_length=20)
+    TYPES = (
+        ("Basic", "Basic"), ("Obligatory", "Obligatory"), ("Optional", "Optional")
+    )
+    type = models.CharField(choices=TYPES, blank=False, max_length=10)
     SEMESTERS = ((1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7), (8, 8))
     semester = MultiSelectField(choices=SEMESTERS, blank=False)
     # Dictionary with the form schedules = { "1M":("L09-10", "M11-12") ... }
