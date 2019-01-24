@@ -11,6 +11,11 @@ class Subject (models.Model):
     type = models.CharField(max_length=20)
     SEMESTERS = ((1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7), (8, 8))
     semester = MultiSelectField(choices=SEMESTERS, blank=False)
+    # Dictionary with the form schedules = { "1M":("L09-10", "M11-12") ... }
+    # If the group does not exist in the dictionary, this means that the subjects is not related with the group
+    schedules = models.TextField(blank=False)
+
+    '''
     GROUPS = (
         # First and second semester
         ("1M", "1M"), ("2M", "2M"), ("2M-B", "2M-B"), ("3M", "3M"), ("3M-B", "3M-B"),
@@ -46,8 +51,31 @@ class Subject (models.Model):
         choices=GROUPS, blank=False)
     schedules = MultiSelectField(
         choices=SCHEDULES, blank=False)
+    '''
+
+    '''
+    Transforms the self.schedules TextField into a Dictionary if the TextField is well written
+    '''
+    def get_schedules(self):
+        schedules = {}
+        try:
+            for line in str(self.schedules).splitlines():
+                s = line.split(":")
+                schedules[s[0]] = s[1][:-2]
+
+        except Exception:
+            print("ERROR: Could not import schedules. ")
+            return "ERROR: Could not import schedules."
+
+        return schedules
 
     def __str__(self):
         return str(self.code) + ": " + str(self.name)
 
-
+    '''
+    Prints all the subject attributes 
+    '''
+    def info(self):
+        schedules = self.get_schedules()
+        return "Name: " + str(self.name)+"\nCode: " + str(self.code) + "\nECTS: " + str(self.ects) + "\nType: " \
+               + str(self.type) + "\nSemester: " + str(self.semester) + "\nSchedules: " + str(schedules)
