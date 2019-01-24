@@ -1,9 +1,12 @@
 from django.shortcuts import render
+from django.db import models
+from .models import Subject
 
 
 def select_course(request):
     if request.POST.get("inlineRadioOptions") == "1":
-        return render(request, 'ScheduleGenerator/select_subjects.html', {'courts': "c", 'club_name': "club_name"})
+        subject =Subject.objects.all()
+        return render(request, 'ScheduleGenerator/select_subjects.html', {'subjects': subject})
     # TODO add the other courses
     return render(request, "ScheduleGenerator/select_course.html")
 

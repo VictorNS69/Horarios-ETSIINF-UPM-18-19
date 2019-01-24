@@ -3,7 +3,7 @@
 
 {% block content %}
 SUBJECTS HERE
-{% for court in courts %}
-    <li>{{ court }}</li>
+{% for s in subjects %}
+    <li>{{ s.info }}</li>
 {% endfor %}
 {% endblock %}
