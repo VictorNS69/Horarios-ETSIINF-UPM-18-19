@@ -7,3 +7,9 @@ La idea es hacer una web que enlace todo lo que necesita un alumno:
 - webs de interes
 - **generador de horarios**
 - etc
+
+
+La información de los horarios ha de ser en el TextField según el formato:
+```
+1M:L9-10
+```
