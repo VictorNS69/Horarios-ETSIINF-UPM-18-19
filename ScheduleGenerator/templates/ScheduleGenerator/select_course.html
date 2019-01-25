@@ -2,13 +2,41 @@
 
 
 {% block content %}
-<form action="" method="POST" style="margin:0 auto;width:75%;text-align:left">
+<form action="" method="GET" style="margin:0 auto;width:50%;text-align:left">
     <h1>Choose the course <span class="badge badge-secondary"></span></h1>
-    {% csrf_token %}
-    <input class="btn btn-primary" type="submit" value="1º" name="1º">
-    <input class="btn btn-primary" type="submit" value="2º" name="2º">
-    <input class="btn btn-primary" type="submit" value="3º" name="3º">
-    <input class="btn btn-primary" type="submit" value="4º" name="4º">
-    <input class="btn btn-primary" type="submit" value="Optional" name="Optional">
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="1º" name="1º">
+        <label class="form-check-label" for="1º">
+            1º
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="2º" name="2º">
+        <label class="form-check-label" for="2º">
+            2º
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="3º" name="3º">
+        <label class="form-check-label" for="3º">
+            3º
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="4º" name="4º">
+        <label class="form-check-label" for="4º">
+            4º
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="Optional" name="Optional">
+        <label class="form-check-label" for="Optional">
+            Optional
+        </label>
+    </div>
+    <form method="POST">
+        {% csrf_token %}
+        <input class="btn btn-primary" type="submit" value="Continue" name="Continue">
+    </form>
 </form>
-{% endblock%}
+{% endblock %}

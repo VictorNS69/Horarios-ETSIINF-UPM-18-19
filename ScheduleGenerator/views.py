@@ -1,36 +1,39 @@
 from django.shortcuts import render
-from django.db import models
 from .models import Subject
 
 
 def select_course(request):
-    if request.POST.get("1º"):
+    subjects = Subject.objects.none()
+    if '1º' in request.GET:
         f1 = Subject.objects.filter(semester="1")
         f2 = Subject.objects.filter(semester="2")
-        subjects = f1.union(f2).order_by("semester")
-        return select_subjects(request, subjects)
+        union = f1.union(f2)
+        subjects = subjects.union(union)
 
-    if request.POST.get("2º"):
+    if '2º' in request.GET:
         f1 = Subject.objects.filter(semester="3")
         f2 = Subject.objects.filter(semester="4")
-        subjects = f1.union(f2).order_by("semester")
-        return select_subjects(request, subjects)
+        union = f1.union(f2)
+        subjects = subjects.union(union)
 
-    if request.POST.get("3º"):
+    if '3º' in request.GET:
         f1 = Subject.objects.filter(semester="5")
         f2 = Subject.objects.filter(semester="6")
-        subjects = f1.union(f2).order_by("semester")
-        return select_subjects(request, subjects)
+        union = f1.union(f2)
+        subjects = subjects.union(union)
 
-    if request.POST.get("4º"):
+    if '4º' in request.GET:
         f1 = Subject.objects.filter(semester="7")
         f2 = Subject.objects.filter(semester="8")
-        subjects = f1.union(f2).order_by("semester")
-        return select_subjects(request, subjects)
+        union = f1.union(f2)
+        subjects = subjects.union(union)
 
-    if request.POST.get("Optional"):
-        subjects = Subject.objects.filter(type="Optional")
-        return select_subjects(request, subjects)
+    if 'Optional' in request.GET:
+        f = Subject.objects.filter(type="Optional")
+        subjects = subjects.union(f)
+
+    if request.GET.get("Continue"):
+        return select_subjects(request, subjects.order_by("semester"))
 
     return render(request, "ScheduleGenerator/select_course.html")
 
