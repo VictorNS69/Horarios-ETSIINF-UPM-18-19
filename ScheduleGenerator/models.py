@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.validators import MaxValueValidator, MinValueValidator
+from django.core.validators import MinValueValidator
 from multiselectfield import MultiSelectField
 
 
@@ -67,8 +67,8 @@ class Subject (models.Model):
                 schedules[s[0]] = s[1][:-2]
 
         except Exception:
-            print("ERROR: Could not import schedules. ")
-            return "ERROR: Could not import schedules."
+            print("ERROR: Could not import schedules for " + str(self.name))
+            return "ERROR: Could not import schedules for " + str(self.name)
 
         return schedules
 
