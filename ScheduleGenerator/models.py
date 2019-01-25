@@ -3,7 +3,7 @@ from django.core.validators import MinValueValidator
 from multiselectfield import MultiSelectField
 
 
-class Subject (models.Model):
+class Subject(models.Model):
     name = models.CharField(max_length=100, unique=True)
     code = models.BigIntegerField(primary_key=True)
     ects = models.PositiveSmallIntegerField(
@@ -59,6 +59,7 @@ class Subject (models.Model):
     '''
     Transforms the self.schedules TextField into a Dictionary if the TextField is well written
     '''
+
     def get_schedules(self):
         schedules = {}
         try:
@@ -78,7 +79,8 @@ class Subject (models.Model):
     '''
     Prints all the subject attributes 
     '''
+
     def info(self):
         schedules = self.get_schedules()
-        return "Name: " + str(self.name)+"\nCode: " + str(self.code) + "\nECTS: " + str(self.ects) + "\nType: " \
+        return "Name: " + str(self.name) + "\nCode: " + str(self.code) + "\nECTS: " + str(self.ects) + "\nType: " \
                + str(self.type) + "\nSemester: " + str(self.semester) + "\nSchedules: " + str(schedules)
