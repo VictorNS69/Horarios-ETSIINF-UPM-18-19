@@ -9,7 +9,7 @@ class Subject(models.Model):
     ects = models.PositiveSmallIntegerField(
         default=0, validators=[MinValueValidator(1)])
     TYPES = (
-        ("Basica", "Basica"), ("Obligatoria", "Obligatoria"), ("Opcional", "Opcional")
+        ("BASICA", "BASICA"), ("OBLIGATORIA", "OBLIGATORIA"), ("OPCIONAL", "OPCIONAL")
     )
     type = models.CharField(choices=TYPES, blank=False, max_length=10)
     SEMESTERS = ((1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7), (8, 8))
