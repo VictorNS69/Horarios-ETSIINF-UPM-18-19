@@ -1,9 +1,10 @@
 class Subject:
-    def __init__(self, code, name, type, ects, schedules):
+    def __init__(self, code, name, type, ects, semester, schedules):
         self.code = code
         self.name = name
         self.type = type
         self.ects = ects
+        self.semester = semester
         self.schedules = schedules
 
 
@@ -22,13 +23,14 @@ def make_attributes():
     subjects = []
     with open("data.dat") as f:
         for line in f:
-            splitter = line.split("@", 4)
+            splitter = line.split("@", 5)
             code = splitter[0]
             name = splitter[1]
             type = splitter[2]
             ects = splitter[3]
-            schedules = make_schedules(splitter[4])
-            subjects.append(Subject(code, name, type, ects, schedules))
+            semester = splitter[4]
+            schedules = make_schedules(splitter[5])
+            subjects.append(Subject(code, name, type, ects, semester, schedules))
     return subjects
 
 

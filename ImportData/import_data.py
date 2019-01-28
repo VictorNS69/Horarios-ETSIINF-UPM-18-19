@@ -7,18 +7,20 @@ import shlex
 
 def main():
     if os.path.isfile('../db.sqlite3'):
-        print("This will erase the db.sqlite3 database you have now")
-        inp = input("Are you agree? [Y/n]: ")
-        if inp == "YES" or "yes" or "y" or "Y":
+        print("This will delete the db.sqlite3 database you have now")
+        yes = {'yes', 'y', 'ye', ''}
+        no = {'no', 'n'}
+        inp = input("Are you agree? [Y/n]: ").lower()
+        if inp in yes:
             print("Deleting db.sqlite3")
             os.remove("../db.sqlite3")
             print("db.sqlite3 removed")
-        elif inp == "NO" or "no" or "n" or "N":
+        elif inp in no:
             print("Import cancelled\nExiting")
-            exit(1)
+            exit(0)
         else:
             print("This is not a valid value.\nExiting.")
-            exit(1)
+            exit(0)
 
     print("Extracting data")
     subjects = DataObject.make_attributes()
@@ -39,10 +41,13 @@ def main():
         to_string = to_string.replace("}", "\"")
         to_string = to_string.replace("'", "")
         cur.execute("INSERT INTO ScheduleGenerator_subject (type, semester, schedules, ects, code, name ) "
-                    "VALUES(\'" + str(item.type) + "\', " + "1" + ", \'" + to_string + "\',\' " + str(item.ects) + "\',\' "
+                    "VALUES(\'" + str(item.type) + "\', " + str(item.semester) + ", \'" + to_string + "\',\' " + str(item.ects) + "\',\' "
                     + str(item.code) + "\', \'" + str(item.name) + "\');")
         con.commit()
     print("Database created as db.sqlite3")
+    con.close()
+    print("Closed connection with the database")
+    exit(0)
 
 
 if __name__ == "__main__":
