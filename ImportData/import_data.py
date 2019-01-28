@@ -45,6 +45,7 @@ def main():
         to_string = to_string.replace("{", "\"")
         to_string = to_string.replace("}", "\"")
         to_string = to_string.replace("'", "")
+        to_string = to_string.replace("\"", "")
         cur.execute("INSERT INTO ScheduleGenerator_subject (type, semester, schedules, ects, code, name ) "
                     "VALUES(\'" + str(item.type) + "\', " + str(item.semester) + ", \'" + to_string + "\',\' " +
                     str(item.ects) + "\',\' " + str(item.code) + "\', \'" + str(item.name) + "\');")

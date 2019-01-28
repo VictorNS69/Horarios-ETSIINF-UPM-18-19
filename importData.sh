@@ -6,4 +6,7 @@
 cd ImportData
 python import_data.py
 cd ..
+echo "Creating superuser for the database"
+echo "If you dont want to create a super user, press Ctrl-C"
+./manage.py createsuperuser
 
