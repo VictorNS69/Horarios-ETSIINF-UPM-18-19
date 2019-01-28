@@ -10,6 +10,6 @@ La idea es hacer una web que enlace todo lo que necesita un alumno:
 
 
 La información de los horarios ha de ser en el TextField según el formato:
-```
-1M:L9-10
-```
+
+mirar el [data.dat](/ImportData/data.dat)
+
