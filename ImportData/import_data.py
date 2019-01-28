@@ -6,6 +6,10 @@ import shlex
 
 
 def main():
+    """
+    Main program that creates the db and imports the data from the data.dat file
+    :return: Creates a db.sqlite3 database
+    """
     if os.path.isfile('../db.sqlite3'):
         print("This will delete the db.sqlite3 database you have now")
         yes = {'yes', 'y', 'ye', ''}
@@ -34,6 +38,7 @@ def main():
     print("Creating the database")
     subprocess.call(shlex.split('../manage.py makemigrations'))
     subprocess.call(shlex.split('../manage.py migrate'))
+
     print("Importing data")
     for item in subjects:
         to_string = str(item.schedules)
@@ -45,6 +50,7 @@ def main():
                     + str(item.code) + "\', \'" + str(item.name) + "\');")
         con.commit()
     print("Database created as db.sqlite3")
+
     con.close()
     print("Closed connection with the database")
     exit(0)

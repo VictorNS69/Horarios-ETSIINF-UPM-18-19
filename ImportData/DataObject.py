@@ -1,5 +1,14 @@
 class Subject:
     def __init__(self, code, name, type, ects, semester, schedules):
+        """
+        Constructor
+        :param code: Code of the subject
+        :param name: Name of the subject
+        :param type: Type of the subject
+        :param ects: ects of the subject
+        :param semester: Semester of the subject
+        :param schedules: Schedules of the subject
+        """
         self.code = code
         self.name = name
         self.type = type
@@ -9,6 +18,11 @@ class Subject:
 
 
 def make_schedules(all_groups):
+    """
+    Transforms the schedules from raw data into a dictionary
+    :param all_groups: All the GROUP-SCHEDULES available with raw format
+    :return: A dictionary with k-v GROUP-SCHEDULES
+    """
     schedules = {}
     all_groups = all_groups.replace("\n", "")
     all_groups = all_groups.replace("\r", "")
@@ -20,6 +34,10 @@ def make_schedules(all_groups):
 
 
 def make_attributes():
+    """
+    Creates Subjects objects from the raw data
+    :return: An array of Subjects
+    """
     subjects = []
     with open("data.dat") as f:
         for line in f:
