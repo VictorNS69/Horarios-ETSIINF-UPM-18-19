@@ -41,6 +41,8 @@ def make_attributes():
     subjects = []
     with open("data.dat") as f:
         for line in f:
+            if not line.strip():
+                continue
             splitter = line.split("@", 5)
             code = splitter[0]
             name = splitter[1]
