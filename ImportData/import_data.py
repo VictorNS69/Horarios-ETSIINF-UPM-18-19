@@ -1,25 +1,19 @@
+import sqlite3
+import DataObject as DO
+
+def main():
+    
+    print("Extracting data")
+    data_o = DO.DataObject()
+    data_o.make_attributes()
+    print("Data extracted")
+    print("Connecting to the database")
+    con = sqlite3.connect("../db.sqlite3")
+    cur = con.cursor()
+    print("Established connection")
+    cur.execute("SELECT *  FROM ScheduleGenerator_subject WHERE name = 'FUNDAMENTOS FISICOS Y TECNOLOGICOS DE LA INFORMATICA';")
+    print(cur.fetchone())
 
 
-class ImportData:
-    def __init__(self):
-
-
-    def make_schedules(self, all_groups):
-        self.schedules = {}
-        with open("data.dat") as f:
-            for line in f:
-                groups = line.split("@")
-                for i in groups:
-                    group_sche = i.split(":")
-                    if "\n" in group_sche:
-                        groups[2].replace("\n", "")
-                    self.schedules[group_sche[0]] = group_sche[1]
-
-    def make_attributes(self):
-        with open("data.dat") as f:
-            for line in f:
-
-
-'''
-##  105000001@FUNDAMENTOS FISICOS Y TECNOLOGICOS DE LA INFORMATICA@Basica@6@
-'''
+if __name__ == "__main__":
+    main()
