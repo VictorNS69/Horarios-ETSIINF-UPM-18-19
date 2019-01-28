@@ -1,5 +1,6 @@
 #!/bin/bash
 
-./manage.py runserver
+# Simple script to run the server
 
+./manage.py runserver
 
