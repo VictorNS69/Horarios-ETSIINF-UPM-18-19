@@ -1,6 +1,3 @@
-import numpy as np
-
-
 class Subject:
     def __init__(self, code, name, type, ects, schedules):
         self.code = code
@@ -35,9 +32,3 @@ def make_attributes():
     return subjects
 
 
-'''
-if __name__ == "__main__":
-    subjects = make_attributes()
-    for item in subjects:
-        print (item.name)
-'''
