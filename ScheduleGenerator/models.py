@@ -46,6 +46,5 @@ class Subject(models.Model):
                + str(self.type) + "\nSemester: " + str(self.semester) + "\nSchedules: " + str(schedules)
 
     class Meta:
-        ordering = ["code"]
         verbose_name = "Subject"
         verbose_name_plural = "Subjects"
