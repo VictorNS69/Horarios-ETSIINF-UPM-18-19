@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Subject
+from .algorithm import schedule_generator_algorithm
 
 
 def select_course(request):
@@ -48,4 +49,5 @@ def about(request):
 
 def select_subjects(request, context):
     print("in select_subjects")
+    schedule_generator_algorithm(context)
     return render(request, "ScheduleGenerator/select_subjects.html", {'context': context})
