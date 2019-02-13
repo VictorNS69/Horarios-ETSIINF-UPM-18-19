@@ -24,7 +24,7 @@ If the virtual environment is not activated, activate it
 ```bash
 $ workon Horarios-ETSIINF
 ```
-5\. Install the requirements
+5\. Install the [requirements](/requirements.txt)
 ```bash
 $ pip install -r requirements.txt
 ```
