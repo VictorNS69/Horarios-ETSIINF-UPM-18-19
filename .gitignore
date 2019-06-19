@@ -108,3 +108,7 @@ venv.bak/
 
 #PostgreSQL
 *.pgsql
+
+# My files
+asignaturas
+/horarios
